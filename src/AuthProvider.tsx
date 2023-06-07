@@ -17,13 +17,15 @@ const AuthProvider = ({ children }: ProviderType) => {
     }
   });
 
+  const isTokenLoaded = token !== '';
+
   const loadToken = (token: string) => {
     setToken(token);
     localStorage.setItem('accessToken', token);
   };
 
   const value = {
-    token,
+    isTokenLoaded,
     loadToken,
   };
 

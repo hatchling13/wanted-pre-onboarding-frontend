@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts';
 
 function Todo() {
-  const { token } = useContext(AuthContext);
+  const { isTokenLoaded } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token === '') {
+    if (!isTokenLoaded) {
       navigate('/signin');
     }
-  }, [token]);
+  }, [isTokenLoaded]);
 
   return <h1>Todo</h1>;
 }

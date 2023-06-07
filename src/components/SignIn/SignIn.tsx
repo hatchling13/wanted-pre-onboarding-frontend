@@ -8,21 +8,20 @@ import type { NotFoundError } from '../../errors';
 
 function SignIn() {
   const result = useActionData() as Result<UserType, NotFoundError>;
-  const { token, loadToken } = useContext(AuthContext);
+  const { isTokenLoaded, loadToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (result && result.ok && result.value) {
       loadToken(result.value?.access_token);
-      navigate('/todo');
     }
   }, [result]);
 
   useEffect(() => {
-    if (token !== '') {
+    if (isTokenLoaded) {
       navigate('/todo');
     }
-  }, [token]);
+  }, [isTokenLoaded]);
 
   const error = result && !result.ok ? result.error : undefined;
 

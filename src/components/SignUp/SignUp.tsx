@@ -8,23 +8,17 @@ import type { BadRequestError } from '../../errors';
 
 function SignUp() {
   const result = useActionData() as Result<undefined, BadRequestError>;
-  const { token } = useContext(AuthContext);
+  const { isTokenLoaded } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const error = result && !result.ok ? result.error : undefined;
   const isSuccessful = result?.ok;
 
   useEffect(() => {
-    if (isSuccessful) {
+    if (isSuccessful || isTokenLoaded) {
       navigate('/todo');
     }
-  }, [isSuccessful]);
-
-  useEffect(() => {
-    if (token !== '') {
-      navigate('/todo');
-    }
-  }, [token]);
+  }, [isSuccessful, isTokenLoaded]);
 
   return (
     <main aria-label="Sign-up page">
