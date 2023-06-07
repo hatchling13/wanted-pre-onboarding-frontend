@@ -9,6 +9,8 @@ function AuthForm({ authType }: AuthFormType) {
 
   const formLabel = authType === 'signin' ? 'Sign-in' : 'Sign-up';
 
+  const isValid = email.includes('@') && password.length >= 8;
+
   return (
     <Form method="post" aria-label={`${formLabel} form`}>
       <label htmlFor="email">
@@ -33,7 +35,11 @@ function AuthForm({ authType }: AuthFormType) {
           data-testid="password-input"
         />
       </label>
-      <button type="submit" data-testid={`${authType}-button`}>
+      <button
+        type="submit"
+        data-testid={`${authType}-button`}
+        disabled={!isValid}
+      >
         로그인
       </button>
     </Form>
