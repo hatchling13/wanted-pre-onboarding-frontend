@@ -7,7 +7,7 @@ import type { Result, UserType } from '../../types';
 import type { NotFoundError } from '../../errors';
 
 function SignIn() {
-  const result = useActionData() as Result<UserType, NotFoundError>;
+  const result = useActionData() as Result<UserType, Error>;
   const { isTokenLoaded, loadToken } = useContext(AuthContext);
   const navigate = useNavigate();
 

@@ -34,8 +34,8 @@ export const signInAction = async (args: ActionFunctionArgs) => {
     return failed(response.error);
   }
 
-  if (!response.value) {
-    return failed(Error('Unknown Error'));
+  if (!response.value?.ok) {
+    return failed(Error(response.value?.statusText));
   }
 
   const body = await response.value.json();

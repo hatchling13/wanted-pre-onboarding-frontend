@@ -12,6 +12,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const error = result && !result.ok ? result.error : undefined;
+
   const isSuccessful = result?.ok;
 
   useEffect(() => {
@@ -24,11 +25,9 @@ function SignUp() {
     <main aria-label="Sign-up page">
       <AuthForm authType="signup" />
       <div>
-        {error?.errorMessages.map((message) => (
-          <p key={message}>{message}</p>
-        ))}
+        {error &&
+          error.errorMessages.map((message) => <p key={message}>{message}</p>)}
       </div>
-      {isSuccessful && <span>Successfully signed up!</span>}
     </main>
   );
 }

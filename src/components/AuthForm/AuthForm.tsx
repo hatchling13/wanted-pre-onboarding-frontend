@@ -8,6 +8,7 @@ function AuthForm({ authType }: AuthFormType) {
   const [password, setPassword] = useState('');
 
   const formLabel = authType === 'signin' ? 'Sign-in' : 'Sign-up';
+  const buttonLabel = authType === 'signin' ? '로그인' : '회원가입';
 
   const isValid = email.includes('@') && password.length >= 8;
 
@@ -40,7 +41,7 @@ function AuthForm({ authType }: AuthFormType) {
         data-testid={`${authType}-button`}
         disabled={!isValid}
       >
-        로그인
+        {buttonLabel}
       </button>
     </Form>
   );
