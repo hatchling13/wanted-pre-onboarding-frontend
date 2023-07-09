@@ -27,6 +27,7 @@ const AuthProvider = ({ children }: ProviderType) => {
   const value = {
     isTokenLoaded,
     loadToken,
+    token,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

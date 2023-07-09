@@ -21,6 +21,13 @@ export interface UserType {
   access_token: string;
 }
 
+export interface TodoType {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+}
+
 export interface FailedResponseBody {
   error: string;
   message: string[];

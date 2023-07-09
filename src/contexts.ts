@@ -6,4 +6,5 @@ export const AuthContext = createContext({
     token;
     return;
   },
+  token: '',
 });

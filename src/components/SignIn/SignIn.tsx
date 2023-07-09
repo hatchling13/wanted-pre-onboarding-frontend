@@ -4,7 +4,6 @@ import { useActionData, useNavigate } from 'react-router-dom';
 import { AuthForm } from '../AuthForm';
 import { AuthContext } from '../../contexts';
 import type { Result, UserType } from '../../types';
-import type { NotFoundError } from '../../errors';
 
 function SignIn() {
   const result = useActionData() as Result<UserType, Error>;

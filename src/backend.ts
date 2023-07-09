@@ -16,3 +16,14 @@ export const postData = async (endpoint: string, data: AuthType) => {
 
   return await fetch(`${API_ROOT}${endpoint}`, request);
 };
+
+export const getData = async (endpoint: string, token: string) => {
+  const request: RequestInit = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return await fetch(`${API_ROOT}${endpoint}`, request);
+};
